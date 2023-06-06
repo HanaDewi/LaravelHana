@@ -2,22 +2,22 @@
   
 namespace App\Http\Controllers;
   
-use App\Models\Bentuk;
+use App\Models\Nilai_MK_Hana;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\View\View;
   
-class BentukController extends Controller
+class NilaiMKHanaController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index(): View
     {
-        $bentuks = Bentuk::latest()->paginate(5);
+        $nilais = Nilai_MK_Hana::latest()->paginate(5);
         
-        return view('bentuks.index',compact('bentuks'))
+        return view('nilaimkhana.index',compact('nilaimkhana'))
                     ->with('i', (request()->input('page', 1) - 1) * 5);
     }
   
@@ -26,7 +26,7 @@ class BentukController extends Controller
      */
     public function create(): View
     {
-        return view('bentuks.create');
+        return view('nilaimkhana.create');
     }
   
     /**
@@ -35,11 +35,12 @@ class BentukController extends Controller
     public function store(Request $request): RedirectResponse
     {
         $request->validate([
-            'kodebentuk' => 'required',
-            'bentuk' => 'required',
+            'id_mk' => 'required',
+            'namamk' => 'required',
+            'nilaimk' => 'required',
         ]);
         
-        Bentuk::create($request->all());
+       Nilai_MK_Hana::create($request->all());
          
         return redirect()->route('bentuks.index')
                         ->with('success','bentuk created successfully.');
@@ -48,7 +49,7 @@ class BentukController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Bentuk $bentuk): View
+    public function show(Nilai_MK_Hana $bentuk): View
     {
         return view('bentuks.show',compact('bentuk'));
     }
@@ -56,7 +57,7 @@ class BentukController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Bentuk $bentuk): View
+    public function edit(Nilai_MK_Hana $bentuk): View
     {
         return view('bentuks.edit',compact('bentuk'));
     }
@@ -64,11 +65,12 @@ class BentukController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Bentuk $bentuk): RedirectResponse
+    public function update(Request $request, Nilai_MK_Hana $bentuk): RedirectResponse
     {
         $request->validate([
-            'kodebentuk' => 'required',
-            'bentuk' => 'required',
+            'id_mk' => 'required',
+            'namamk' => 'required',
+            'nilaimk' => 'required',
         ]);
         
         $bentuk->update($request->all());
@@ -80,11 +82,11 @@ class BentukController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Bentuk $bentuk): RedirectResponse
+    public function destroy(Nilai_MK_Hana $bentuk): RedirectResponse
     {
         $bentuk->delete();
          
-        return redirect()->route('bentuks.index')
+        return redirect()->route('nilais.index')
                         ->with('success','bentuk deleted successfully');
     }
 }

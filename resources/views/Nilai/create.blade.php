@@ -4,10 +4,10 @@
 <div class="row">
     <div class="col-lg-12 margin-tb">
         <div class="pull-left">
-            <h2>Add New Obat</h2>
+            <h2>Add New Nilai</h2>
         </div>
         <div class="pull-right">
-            <a class="btn btn-primary" href="{{ route('jenis.index') }}"> Back</a>
+            <a class="btn btn-primary" href="{{ route('nilais.index') }}"> Back</a>
         </div>
     </div>
 </div>
@@ -23,20 +23,26 @@
     </div>
 @endif
    
-<form action="{{ route('jenis.store') }}" method="POST">
+<form action="{{ route('nilais.store') }}" method="POST">
     @csrf
   
      <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
-                <strong>Kode Obat:</strong>
-                <input type="text" name="kodeobat" class="form-control" placeholder="Kode Obat">
+                <strong>ID MK:</strong>
+                <input type="text" name="id_mk" class="form-control" placeholder="Id MK">
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
-                <strong>Jenis Obat:</strong>
-                <input type="text" name="jenisobat" class="form-control" placeholder="Jenis Obat">
+                <strong>Nama MK</strong>
+                <input type="text" name="namamk" class="form-control" placeholder="Nama MK">
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group">
+                <strong>Nilai MK</strong>
+                <input type="text" name="nilaimk" class="form-control" placeholder="nilaimk">
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12 text-center">
